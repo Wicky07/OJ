@@ -1,0 +1,38 @@
+<div>
+  //angul2如果使用binding功能必须加这个标签
+  <form #formRef="ngFOrm">
+
+    //form-group是bootstrap的class，把div范围内整合成一个群组，使格式一致
+    <div class="form-group">
+      //label的for 对应 input  id
+      <label for="problemName">Problem Name</label>
+
+      // id html表单使用，name angular表单使用
+      //required表示一定要填写此栏，若为空，无法提交并显示后面文字
+      //[{ngModel}] 数据双向绑定
+      <input type="text" class="form-control" id="problemName"
+      name="problemName" required placeholder="Enter Problem Name" [{ngModel}]="newProblem.name">
+    </div>
+    <div class="form-group">
+      <label for="problemDesc">Problem Description</label>
+      //三行宽的文本输入框
+      <textarea type="text" row="3" class="form-control" id="problemDesc"
+      name="problemDesc" required placeholder="Enter Problem DEscription" [{ngModel}]="newProblem.desc">
+    </div>
+    <div class="form-group">
+      <label for="difficulty">Difficulty</label>
+      //下拉菜单
+      <select class="form-control" id="difficulty"
+      name="difficulty" [{ngModel}]="newProblem.difficulty">
+        <option *ngFor="let difficulty of difficulties" [value]="difficulty">
+          {[difficulty]}
+        </option>
+      </select>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <button type="submit" class="btn btn-primary pull-right" (click)="addProblem()">addProblem</button>
+      </div>
+    </div>
+  <form>
+</div>
